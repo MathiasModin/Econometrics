@@ -57,3 +57,15 @@ auto.adf <- function(data, lags="AIC", maxlag=18, alpha="0.5"){
   return(biglist)
 }
 
+adft <- function(data, lags=12, selectlags="AIC"){
+    types <- c('trend', 'drift', 'none')
+    
+    for (i in 1:3){
+      print(paste0('################',' ADF test with ', types[i],'################'))
+      model <- ur.df(data, type = types[i], lags = lags, selectlags = selectlags)
+      print(cbind(t(model@teststat),model@cval))
+      print('####################################################') 
+    }
+}
+
+adft(prod, lags=18, selectlags = "AIC")
