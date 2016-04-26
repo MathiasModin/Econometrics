@@ -67,5 +67,3 @@ adft <- function(data, lags=12, selectlags="AIC"){
       print('####################################################') 
     }
 }
-
-adft(prod, lags=18, selectlags = "AIC")
