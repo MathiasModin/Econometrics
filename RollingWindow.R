@@ -55,7 +55,7 @@ r.arima <- function(x, n.ahead=12, size=0.65, order=c(1,0,0), type=c("Arima", "a
     }
     
     for (i in 1:n.ahead){
-        hRMSE[i]<- accuracy(fc[i+1,], act[i,])[2]
+        hRMSE[i]<- accuracy(fc[i+1,], act[i+1,])[2]
     }
     
     print(timer(proc.time()[3]-s[3]))
@@ -116,7 +116,7 @@ r.var <- function(x, n.ahead=12, size=0.65, var=1, p="bic"){
     }
     
     for (i in 1:n.ahead){
-        hRMSE[i]<- accuracy(fc[i+1,], act[i,])[2]
+        hRMSE[i]<- accuracy(fc[i+1,], act[i+1,])[2]
     }
     print(timer(proc.time()[3]-s[3]))
     return(list(forecasts=fc, act.vals=act, hRMSE=hRMSE, rRMSE=rRMSE))
