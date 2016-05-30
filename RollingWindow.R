@@ -50,7 +50,7 @@ r.arima <- function(x, n.ahead=12, size=0.65, order=c(1,0,0), type=c("Arima", "a
         lines(ts(fc[,i], start=EndDate, freq=frequency(x)), col="darkred")
         if (i <= n.win-n.ahead){
             act[,i] <- window(x, start=EndDate, end=EndDate + c(0,n.ahead))
-            rRMSE[i,1] <- accuracy(fc[-1,i], act[,i])[2]
+            rRMSE[i,1] <- accuracy(fc[-1,i], act[-1,i])[2]
         }
     }
     
@@ -111,7 +111,7 @@ r.var <- function(x, n.ahead=12, size=0.65, var=1, p="bic"){
         lines(ts(fc[,i], start=EndDate, freq=frequency(x)), col="darkred")
         if (i <= n.win-n.ahead){
             act[,i] <- window(x[,var], start=EndDate, end=EndDate + c(0,n.ahead))
-            rRMSE[i,1] <- accuracy(fc[-1,i], act[,i])[2]
+            rRMSE[i,1] <- accuracy(fc[-1,i], act[-1,i])[2]
         }
     }
     
